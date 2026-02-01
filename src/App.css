@@ -1,0 +1,33 @@
+@import 'tailwindcss';
+
+html,
+body {
+    background-color: #f9fafb;
+    color: #111827;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+button,
+a {
+    transition-property: color, background-color, border-color,
+        text-decoration-color, fill, stroke;
+    transition-duration: 200ms;
+}
+
+@theme {
+    --color-deep-navy: #1b3c53;
+    --color-teal-mid: #234c6a;
+    --color-blue-gray: #456882;
+    --color-soft-white: #e3e3e3;
+}
