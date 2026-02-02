@@ -4,10 +4,39 @@
         <meta charset="UTF-8" />
         <link rel="icon" type="image/svg+xml" href="/logo_noybcore.svg" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>NoYbCore</title>
+        <title>Noybcore | Portfolio & Services</title>
+        <meta
+            name="description"
+            content="Creative developer building React apps, websites, and tools. Contact me for projects."
+        />
     </head>
     <body>
         <div id="root"></div>
         <script type="module" src="/src/main.tsx"></script>
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "name": "Noybcore",
+                "url": "https://noybcore.com",
+                "logo": "https://noybcore.com/assets/logo.png",
+                "description": "We build fast, modern web & mobile apps. A remote-first team turning ideas into code.",
+                "address": {
+                    "addressLocality": "Casablanca",
+                    "addressCountry": "MA"
+                },
+                "email": "noybcore@gmail.com",
+                "sameAs": [
+                    "https://github.com/noybcore",
+                    "https://x.com/noybcore",
+                    {
+                        "@type": "Person",
+                        "name": "Yassine",
+                        "jobTitle": "Founder & Lead Developer",
+                        "url": "https://ybouali.dev"
+                    }
+                ]
+            }
+        </script>
     </body>
 </html>
