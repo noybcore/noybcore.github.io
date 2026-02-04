@@ -1,12 +1,33 @@
 @import 'tailwindcss';
 
+@keyframes shift {
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* REMOVE background from html/body */
 html,
 body {
-    background-color: #f9fafb;
     color: #111827;
     font-family: 'Inter', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    overflow: hidden;
+}
+
+/* Add a utility class for content areas */
+.content-bg {
+    background-color: #f9fafb;
+}
+
+.dark .content-bg {
+    background-color: #0f172a;
 }
 
 html {
