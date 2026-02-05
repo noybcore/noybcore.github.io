@@ -2,6 +2,7 @@
 
 import { motion, type Variants } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import Button from '../../components/buttons/Button';
 
 const fadeInUpVariants: Variants = {
     hidden: {
@@ -15,31 +16,6 @@ const fadeInUpVariants: Variants = {
             duration: 0.8,
             ease: [0.22, 1, 0.36, 1] as const,
         },
-    },
-};
-
-const buttonVariants: Variants = {
-    hidden: {
-        opacity: 0,
-        y: 20,
-    },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: {
-            duration: 0.7,
-            ease: [0.22, 1, 0.36, 1] as const,
-        },
-    },
-    hover: {
-        scale: 1.06,
-        boxShadow: '0 20px 35px -10px rgba(59, 130, 246, 0.4)',
-        transition: { duration: 0.3 },
-    },
-    tap: {
-        scale: 0.94,
-        boxShadow: '0 10px 15px -5px rgba(59, 130, 246, 0.3)',
-        transition: { duration: 0.2 },
     },
 };
 
@@ -78,23 +54,15 @@ export default function Home() {
                     From idea to app store — fast, clean, and completely yours.
                 </motion.p>
 
-                <motion.div
-                    initial="hidden"
-                    animate="visible"
-                    variants={buttonVariants}
-                    transition={{ delay: 0.7 }}
-                    className="pt-6"
-                >
-                    <motion.button
-                        onClick={() => navigate('/contact')}
-                        variants={buttonVariants}
-                        whileHover="hover"
-                        whileTap="tap"
-                        className="inline-flex items-center px-8 py-4 text-lg font-semibold text-white bg-blue-gray from-blue-600 to-indigo-600 rounded-full shadow-lg hover:from-blue-700 hover:to-indigo-700 focus:outline-none focus:ring-4 focus:ring-blue-500/30 transition-colors duration-300"
-                    >
-                        Start Project
+                <Button
+                    to="/contact"
+                    variant="primary"
+                    size="lg"
+                    delay={0.7}
+                    onClick={() => navigate('/contact')}
+                    icon={
                         <svg
-                            className="ml-3 w-5 h-5"
+                            className="w-5 h-5"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -107,8 +75,10 @@ export default function Home() {
                                 d="M13 7l5 5m0 0l-5 5m5-5H6"
                             />
                         </svg>
-                    </motion.button>
-                </motion.div>
+                    }
+                >
+                    Start Project
+                </Button>
             </div>
         </div>
     );
