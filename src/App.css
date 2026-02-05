@@ -10,18 +10,14 @@
     }
 }
 
-/* REMOVE background from html/body */
 html,
 body {
     color: #111827;
     font-family: 'Inter', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    margin: 0;
-    overflow: hidden;
 }
 
-/* Add a utility class for content areas */
 .content-bg {
     background-color: #f9fafb;
 }
@@ -51,4 +47,55 @@ a {
     --color-teal-mid: #234c6a;
     --color-blue-gray: #456882;
     --color-soft-white: #e3e3e3;
+    --scroll-thumb: #9ca3af;
+    --scroll-thumb-dark: #64748b;
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scroll-thumb) #f3f4f6;
+}
+
+.dark * {
+    scrollbar-color: var(--scroll-thumb-dark) #1e293b;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f3f4f6;
+    border-radius: 10px;
+}
+
+.dark ::-webkit-scrollbar-track {
+    background: #1e293b;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--scroll-thumb);
+    border-radius: 10px;
+    border: 2px solid #f3f4f6;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #6b7280;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+    background: var(--scroll-thumb-dark);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+}
+
+::-webkit-scrollbar-corner {
+    background: #f3f4f6;
+}
+
+.dark ::-webkit-scrollbar-corner {
+    background: #1e293b;
 }

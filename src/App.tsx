@@ -14,7 +14,7 @@ function App() {
             <Background />
             <div className="fixed inset-0">
                 <Navbar />
-                <main className="relative w-full h-full">
+                <main className="relative w-full h-full overflow-y-auto  min-h-screen">
                     <AppRoutes />
                 </main>
             </div>
