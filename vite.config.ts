@@ -1,10 +1,11 @@
 import { defineConfig } from 'vite';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from 'vite-plugin-sitemap';
-import pagesPlugin from 'vite-plugin-pages';
+import Pages from 'vite-plugin-pages-react';
 
 export default defineConfig({
     base: '/noybcore.github.io/',
+    // base: '/',
     plugins: [
         tailwindcss(),
         sitemap({
@@ -15,8 +16,9 @@ export default defineConfig({
             changefreq: 'monthly',
             priority: 0.8,
         }),
-        pagesPlugin({
+        Pages({
             dirs: 'src/pages',
+            extensions: ['tsx', 'ts', 'jsx', 'js'],
         }),
     ],
 });
