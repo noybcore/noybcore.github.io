@@ -19,7 +19,10 @@ const fadeInUpVariants: Variants = {
     },
 };
 
+import { useTranslation } from 'react-i18next';
+
 export default function Home() {
+    const { t } = useTranslation();
     const navigate = useNavigate();
 
     return (
@@ -31,7 +34,7 @@ export default function Home() {
                     variants={fadeInUpVariants}
                     className="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white"
                 >
-                    We ship code that lasts.
+                    {t('home.hero.title')}
                 </motion.h1>
 
                 <motion.p
@@ -41,7 +44,7 @@ export default function Home() {
                     transition={{ delay: 0.2 }}
                     className="text-xl sm:text-2xl text-gray-300 font-light tracking-wide"
                 >
-                    Web. Mobile. Full-stack.
+                    {t('home.hero.subtitle')}
                 </motion.p>
 
                 <motion.p
@@ -51,7 +54,7 @@ export default function Home() {
                     transition={{ delay: 0.4 }}
                     className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed"
                 >
-                    From idea to app store — fast, clean, and completely yours.
+                    {t('home.hero.description')}
                 </motion.p>
 
                 <Button
@@ -77,7 +80,7 @@ export default function Home() {
                         </svg>
                     }
                 >
-                    Start Project
+                    {t('home.hero.cta')}
                 </Button>
             </div>
         </div>

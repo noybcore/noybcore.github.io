@@ -28,7 +28,10 @@ const staggerContainer = {
     },
 };
 
+import { useTranslation } from 'react-i18next';
+
 export default function Services() {
+    const { t } = useTranslation();
     return (
         <MotionConfig reducedMotion="user">
             <div className="min-h-screen flex items-center justify-center px-4 py-4 sm:py-8 md:py-12">
@@ -43,7 +46,7 @@ export default function Services() {
                         variants={fadeInUpVariants}
                         className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white"
                     >
-                        What we build.
+                        {t('services.hero.title')}
                     </motion.h1>
 
                     {/* Intro line */}
@@ -51,8 +54,7 @@ export default function Services() {
                         variants={fadeInUpVariants}
                         className="text-lg sm:text-xl md:text-2xl text-gray-300 font-light tracking-wide max-w-3xl mx-auto leading-relaxed"
                     >
-                        Focused, high-quality development — no bloat, no
-                        excuses.
+                        {t('services.intro')}
                     </motion.p>
 
                     {/* Services grid */}
@@ -65,11 +67,10 @@ export default function Services() {
                             className="bg-gray-900/50 border border-gray-800 rounded-xl p-6 md:p-8 text-left"
                         >
                             <h3 className="text-xl md:text-2xl font-bold text-white mb-3">
-                                Cross-platform Flutter apps
+                                {t('services.items.flutter.title')}
                             </h3>
                             <p className="text-gray-400 text-base md:text-lg leading-relaxed">
-                                Single codebase, native performance — iOS,
-                                Android, web, desktop.
+                                {t('services.items.flutter.desc')}
                             </p>
                         </motion.div>
 
@@ -78,11 +79,10 @@ export default function Services() {
                             className="bg-gray-900/50 border border-gray-800 rounded-xl p-6 md:p-8 text-left"
                         >
                             <h3 className="text-xl md:text-2xl font-bold text-white mb-3">
-                                Modern web applications
+                                {t('services.items.web.title')}
                             </h3>
                             <p className="text-gray-400 text-base md:text-lg leading-relaxed">
-                                Fast, responsive, scalable — built for real
-                                users and real traffic.
+                                {t('services.items.web.desc')}
                             </p>
                         </motion.div>
 
@@ -91,11 +91,10 @@ export default function Services() {
                             className="bg-gray-900/50 border border-gray-800 rounded-xl p-6 md:p-8 text-left"
                         >
                             <h3 className="text-xl md:text-2xl font-bold text-white mb-3">
-                                MVP builds
+                                {t('services.items.mvp.title')}
                             </h3>
                             <p className="text-gray-400 text-base md:text-lg leading-relaxed">
-                                Ship fast, validate early — clean code that can
-                                actually grow.
+                                {t('services.items.mvp.desc')}
                             </p>
                         </motion.div>
 
@@ -104,11 +103,10 @@ export default function Services() {
                             className="bg-gray-900/50 border border-gray-800 rounded-xl p-6 md:p-8 text-left"
                         >
                             <h3 className="text-xl md:text-2xl font-bold text-white mb-3">
-                                Backend & infrastructure
+                                {t('services.items.backend.title')}
                             </h3>
                             <p className="text-gray-400 text-base md:text-lg leading-relaxed">
-                                Reliable APIs, databases, auth, scaling — only
-                                what you actually need.
+                                {t('services.items.backend.desc')}
                             </p>
                         </motion.div>
 
@@ -117,11 +115,10 @@ export default function Services() {
                             className="bg-gray-900/50 border border-gray-800 rounded-xl p-6 md:p-8 text-left sm:col-span-2 lg:col-span-1"
                         >
                             <h3 className="text-xl md:text-2xl font-bold text-white mb-3">
-                                Product maintenance & growth
+                                {t('services.items.maintenance.title')}
                             </h3>
                             <p className="text-gray-400 text-base md:text-lg leading-relaxed">
-                                Fix, iterate, scale — long-term partner when the
-                                product is live.
+                                {t('services.items.maintenance.desc')}
                             </p>
                         </motion.div>
                     </motion.div>
@@ -133,7 +130,7 @@ export default function Services() {
                         className="pt-8 md:pt-12 pb-8 md:pb-12"
                     >
                         <p className="text-xl sm:text-2xl text-gray-300 mb-8 md:mb-10">
-                            Pick what you need. Let’s talk.
+                            {t('services.cta.text')}
                         </p>
 
                         <Button
@@ -157,7 +154,7 @@ export default function Services() {
                                 </svg>
                             }
                         >
-                            Get in Touch
+                            {t('services.cta.button')}
                         </Button>
                     </motion.div>
                 </motion.div>

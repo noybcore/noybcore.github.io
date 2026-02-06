@@ -1,0 +1,77 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "contact": "Contact"
+  },
+  "home": {
+    "hero": {
+      "title": "We ship code that lasts.",
+      "subtitle": "Web. Mobile. Full-stack.",
+      "description": "From idea to app store — fast, clean, and completely yours.",
+      "cta": "Start Project"
+    }
+  },
+  "about": {
+    "hero": {
+        "title": "We build products that matter."
+    },
+    "intro": "noybcore is a focused development studio crafting high-quality mobile, web, and desktop applications.",
+    "description": "We deliver clean, performant, and intuitive software that feels native and lasts. From early-stage MVPs to production-grade products used by thousands, we move fast, stay transparent, and never cut corners.",
+    "cta": {
+        "text": "Ready to turn your idea into a real product?",
+        "button": "Let's Start Your Project"
+    }
+  },
+  "services": {
+      "hero": {
+          "title": "What we build."
+      },
+      "intro": "Focused, high-quality development — no bloat, no excuses.",
+      "items": {
+          "flutter": {
+              "title": "Cross-platform Flutter apps",
+              "desc": "Single codebase, native performance — iOS, Android, web, desktop."
+          },
+          "web": {
+              "title": "Modern web applications",
+              "desc": "Fast, responsive, scalable — built for real users and real traffic."
+          },
+          "mvp": {
+              "title": "MVP builds",
+              "desc": "Ship fast, validate early — clean code that can actually grow."
+          },
+          "backend": {
+              "title": "Backend & infrastructure",
+              "desc": "Reliable APIs, databases, auth, scaling — only what you actually need."
+          },
+          "maintenance": {
+              "title": "Product maintenance & growth",
+              "desc": "Fix, iterate, scale — long-term partner when the product is live."
+          }
+      },
+      "cta": {
+          "text": "Pick what you need. Let’s talk.",
+          "button": "Get in Touch"
+      }
+  },
+  "contact": {
+      "hero": {
+          "title": "Get in touch.",
+          "subtitle": "We reply fast."
+      },
+      "form": {
+          "name": "Name",
+          "name_placeholder": "Your name",
+          "email": "Email",
+          "email_placeholder": "you@example.com",
+          "subject": "Subject",
+          "subject_placeholder": "What's this about?",
+          "message": "Message",
+          "message_placeholder": "Tell us about your project..."
+      },
+      "submit": "Send Message",
+      "email_alt": "Or just email us at"
+  }
+}

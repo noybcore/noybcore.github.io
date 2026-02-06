@@ -2,22 +2,19 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
-
-interface NavItem {
-    to: string;
-    label: string;
-}
-
-const navItems: NavItem[] = [
-    { to: '/', label: 'Home' },
-    { to: '/about', label: 'About' },
-    { to: '/services', label: 'Services' },
-    // { to: '/work', label: 'Work' },
-    { to: '/contact', label: 'Contact' },
-];
+import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from '../LanguageSwitcher';
 
 export default function Navbar() {
+    const { t } = useTranslation();
     const [isOpen, setIsOpen] = useState(false);
+
+    const navItems = [
+        { to: '/', label: t('nav.home') },
+        { to: '/about', label: t('nav.about') },
+        { to: '/services', label: t('nav.services') },
+        { to: '/contact', label: t('nav.contact') },
+    ];
 
     const toggleMenu = () => setIsOpen((prev) => !prev);
 
@@ -97,6 +94,10 @@ export default function Navbar() {
                                 {item.label}
                             </NavLink>
                         ))}
+                        {/* Language Switcher Desktop */}
+                        <div className="pl-4 border-l border-white/10">
+                            <LanguageSwitcher />
+                        </div>
                     </div>
 
                     {/* Mobile Hamburger Menu Button */}
@@ -180,6 +181,18 @@ export default function Navbar() {
                                     </NavLink>
                                 </motion.div>
                             ))}
+                            
+                            {/* Mobile Language Switcher */}
+                            <motion.div
+                                variants={itemVariants}
+                                custom={4} 
+                                initial="closed"
+                                animate="open"
+                                exit="closed"
+                                className="pt-8"
+                            >
+                                <LanguageSwitcher />
+                            </motion.div>
                         </div>
                     </motion.div>
                 )}

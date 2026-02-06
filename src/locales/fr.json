@@ -1,0 +1,77 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "services": "Services",
+    "contact": "Contact"
+  },
+  "home": {
+    "hero": {
+      "title": "Du code fait pour durer.",
+      "subtitle": "Web. Mobile. Full-stack.",
+      "description": "De l'idée au store — rapide, propre, et entièrement à vous.",
+      "cta": "Lancer le projet"
+    }
+  },
+  "about": {
+    "hero": {
+        "title": "Nous créons des produits qui comptent."
+    },
+    "intro": "noybcore est un studio de développement dédié à la création d'applications mobiles, web et desktop de haute qualité.",
+    "description": "Nous livrons des logiciels propres, performants et intuitifs. Des MVP aux produits utilisés par des milliers de personnes, nous avançons vite, en toute transparence, sans compromis.",
+    "cta": {
+        "text": "Prêt à transformer votre idée en produit réel ?",
+        "button": "Démarrons votre projet"
+    }
+  },
+  "services": {
+      "hero": {
+          "title": "Ce que nous construisons."
+      },
+      "intro": "Développement ciblé, haute qualité — pas de superflu, pas d'excuses.",
+      "items": {
+          "flutter": {
+              "title": "Apps Flutter multiplateformes",
+              "desc": "Code unique, performance native — iOS, Android, web, desktop."
+          },
+          "web": {
+              "title": "Applications web modernes",
+              "desc": "Rapides, réactives, scalables — conçues pour de vrais utilisateurs et un vrai trafic."
+          },
+          "mvp": {
+              "title": "Développement MVP",
+              "desc": "Livrez vite, validez tôt — du code propre qui peut réellement évoluer."
+          },
+          "backend": {
+              "title": "Backend & infrastructure",
+              "desc": "APIs fiables, bases de données, auth, scaling — juste ce qu'il vous faut."
+          },
+          "maintenance": {
+              "title": "Maintenance & croissance produit",
+              "desc": "Corriger, itérer, scaler — partenaire long-terme une fois le produit live."
+          }
+      },
+      "cta": {
+          "text": "Choisissez ce qu'il vous faut. Parlons-en.",
+          "button": "Contactez-nous"
+      }
+  },
+  "contact": {
+      "hero": {
+          "title": "Contactez-nous.",
+          "subtitle": "Nous répondons vite."
+      },
+      "form": {
+          "name": "Nom",
+          "name_placeholder": "Votre nom",
+          "email": "Email",
+          "email_placeholder": "vous@exemple.com",
+          "subject": "Sujet",
+          "subject_placeholder": "De quoi s'agit-il ?",
+          "message": "Message",
+          "message_placeholder": "Parlez-nous de votre projet..."
+      },
+      "submit": "Envoyer le message",
+      "email_alt": "Ou écrivez-nous simplement à"
+  }
+}

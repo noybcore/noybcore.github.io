@@ -29,7 +29,10 @@ const staggerContainer = {
     },
 };
 
+import { useTranslation } from 'react-i18next';
+
 export default function Contact() {
+    const { t } = useTranslation();
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -65,7 +68,7 @@ export default function Contact() {
                         variants={fadeInUpVariants}
                         className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white"
                     >
-                        Get in touch.
+                        {t('contact.hero.title')}
                     </motion.h1>
 
                     {/* Short line */}
@@ -73,7 +76,7 @@ export default function Contact() {
                         variants={fadeInUpVariants}
                         className="text-xl sm:text-2xl text-gray-300 font-light"
                     >
-                        We reply fast.
+                        {t('contact.hero.subtitle')}
                     </motion.p>
 
                     {/* Form */}
@@ -91,7 +94,7 @@ export default function Contact() {
                                 htmlFor="name"
                                 className="block text-sm font-medium text-gray-400 mb-2"
                             >
-                                Name
+                                {t('contact.form.name')}
                             </label>
                             <input
                                 type="text"
@@ -100,7 +103,7 @@ export default function Contact() {
                                 value={formData.name}
                                 onChange={handleChange}
                                 className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-colors"
-                                placeholder="Your name"
+                                placeholder={t('contact.form.name_placeholder')}
                             />
                         </motion.div>
 
@@ -113,7 +116,7 @@ export default function Contact() {
                                 htmlFor="email"
                                 className="block text-sm font-medium text-gray-400 mb-2"
                             >
-                                Email
+                                {t('contact.form.email')}
                             </label>
                             <input
                                 type="email"
@@ -122,7 +125,7 @@ export default function Contact() {
                                 value={formData.email}
                                 onChange={handleChange}
                                 className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-colors"
-                                placeholder="you@example.com"
+                                placeholder={t('contact.form.email_placeholder')}
                             />
                         </motion.div>
 
@@ -135,7 +138,7 @@ export default function Contact() {
                                 htmlFor="subject"
                                 className="block text-sm font-medium text-gray-400 mb-2"
                             >
-                                Subject
+                                {t('contact.form.subject')}
                             </label>
                             <input
                                 type="text"
@@ -144,7 +147,7 @@ export default function Contact() {
                                 value={formData.subject}
                                 onChange={handleChange}
                                 className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-colors"
-                                placeholder="What's this about?"
+                                placeholder={t('contact.form.subject_placeholder')}
                             />
                         </motion.div>
 
@@ -157,7 +160,7 @@ export default function Contact() {
                                 htmlFor="message"
                                 className="block text-sm font-medium text-gray-400 mb-2"
                             >
-                                Message
+                                {t('contact.form.message')}
                             </label>
                             <textarea
                                 id="message"
@@ -166,7 +169,7 @@ export default function Contact() {
                                 onChange={handleChange}
                                 rows={6}
                                 className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-colors resize-none"
-                                placeholder="Tell us about your project..."
+                                placeholder={t('contact.form.message_placeholder')}
                             />
                         </motion.div>
 
@@ -193,7 +196,7 @@ export default function Contact() {
                                 </svg>
                             }
                         >
-                            Send Message
+                            {t('contact.submit')}
                         </Button>
                     </motion.form>
 
@@ -203,7 +206,7 @@ export default function Contact() {
                         transition={{ delay: 0.6 }}
                         className="text-gray-500 text-sm mt-10"
                     >
-                        Or just email us at{' '}
+                        {t('contact.email_alt')}{' '}
                         <a
                             href="mailto:hi@noybcore.com"
                             className="text-indigo-400 hover:text-indigo-300 transition-colors"

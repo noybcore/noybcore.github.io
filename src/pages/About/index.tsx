@@ -28,7 +28,10 @@ const staggerContainer = {
     },
 };
 
+import { useTranslation } from 'react-i18next';
+
 export default function About() {
+    const { t } = useTranslation();
     return (
         <MotionConfig reducedMotion="user">
             <div className="min-h-screen flex items-center justify-center px-4 py-12 sm:py-16 md:py-20">
@@ -43,7 +46,7 @@ export default function About() {
                         variants={fadeInUpVariants}
                         className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white"
                     >
-                        We build products that matter.
+                        {t('about.hero.title')}
                     </motion.h1>
 
                     {/* Intro paragraph */}
@@ -51,8 +54,7 @@ export default function About() {
                         variants={fadeInUpVariants}
                         className="text-lg sm:text-xl md:text-2xl text-gray-300 font-light tracking-wide max-w-3xl mx-auto leading-relaxed"
                     >
-                        noybcore is a focused development studio crafting
-                        high-quality mobile, web, and desktop applications.
+                        {t('about.intro')}
                     </motion.p>
 
                     {/* Core description */}
@@ -60,10 +62,7 @@ export default function About() {
                         variants={fadeInUpVariants}
                         className="text-base sm:text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed"
                     >
-                        We deliver clean, performant, and intuitive software
-                        that feels native and lasts. From early-stage MVPs to
-                        production-grade products used by thousands, we move
-                        fast, stay transparent, and never cut corners.
+                        {t('about.description')}
                     </motion.p>
 
                     {/* Key strengths */}
@@ -108,7 +107,7 @@ export default function About() {
                         className="pt-8 md:pt-12 pb-8 md:pb-12"
                     >
                         <p className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-8 md:mb-10">
-                            Ready to turn your idea into a real product?
+                            {t('about.cta.text')}
                         </p>
 
                         <Button
@@ -132,7 +131,7 @@ export default function About() {
                                 </svg>
                             }
                         >
-                            Let's Start Your Project
+                            {t('about.cta.button')}
                         </Button>
                     </motion.div>
                 </motion.div>
