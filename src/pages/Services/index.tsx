@@ -31,7 +31,7 @@ const staggerContainer = {
 export default function Services() {
     return (
         <MotionConfig reducedMotion="user">
-            <div className="min-h-screen flex items-center justify-center px-4 py-12 sm:py-16 md:py-20">
+            <div className="min-h-screen flex items-center justify-center px-4 py-4 sm:py-8 md:py-12">
                 <motion.div
                     initial="hidden"
                     animate="visible"

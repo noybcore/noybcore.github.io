@@ -1,5 +1,5 @@
 import { Route, Routes, useLocation } from 'react-router-dom';
-import { About, Home, NotFound, Work, Services } from '../pages';
+import { About, Home, NotFound, Services } from '../pages';
 import Contact from '../pages/Contact';
 import { AnimatePresence, motion, type Variants } from 'framer-motion';
 
@@ -59,7 +59,7 @@ export default function AppRoutes() {
                     }
                 />
 
-                <Route
+                {/* <Route
                     path="/work"
                     element={
                         <motion.div
@@ -71,7 +71,7 @@ export default function AppRoutes() {
                             <Work />
                         </motion.div>
                     }
-                />
+                /> */}
 
                 <Route
                     path="/services"
