@@ -43,12 +43,26 @@ a {
 }
 
 @theme {
-    --color-deep-navy: #1b3c53;
-    --color-teal-mid: #234c6a;
-    --color-blue-gray: #456882;
-    --color-soft-white: #e3e3e3;
-    --scroll-thumb: #9ca3af;
-    --scroll-thumb-dark: #64748b;
+    --color-primary: #6366f1;
+    --color-primary-dark: #4f46e5;
+    --color-accent: #06b6d4;
+    --color-accent-pop: #f43f5e;
+    
+    --color-bg-dark: #020617;
+    --color-bg-light: #f8fafc;
+    --color-bg-card: #0f172a;
+    
+    --color-text-main: #f8fafc;
+    --color-text-muted: #94a3b8;
+
+    /* Legacy compatibility / overrides */
+    --color-deep-navy: var(--color-bg-dark);
+    --color-teal-mid: var(--color-accent);
+    --color-blue-gray: var(--color-text-muted);
+    --color-soft-white: var(--color-text-main);
+
+    --scroll-thumb: #94a3b8;
+    --scroll-thumb-dark: #475569;
 }
 
 * {

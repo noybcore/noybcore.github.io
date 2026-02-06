@@ -4,8 +4,8 @@ import sitemap from 'vite-plugin-sitemap';
 import Pages from 'vite-plugin-pages';
 
 export default defineConfig({
-    base: '/noybcore.github.io/',
-    // base: '/',
+    // base: '/noybcore.github.io/',
+    base: '/',
     plugins: [
         tailwindcss(),
         sitemap({

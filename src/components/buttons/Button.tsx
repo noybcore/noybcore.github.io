@@ -58,10 +58,10 @@ export default function Button({
     const variantStyles = {
         primary: `
       text-white 
-      bg-gradient-to-r from-blue-600 to-indigo-600 
-      hover:from-blue-700 hover:to-indigo-700 
-      focus:ring-blue-500/40
-      shadow-blue-900/30 hover:shadow-blue-700/50
+      bg-gradient-to-r from-primary to-primary-dark 
+      hover:from-primary-dark hover:to-indigo-700 
+      focus:ring-primary/40
+      shadow-primary/30 hover:shadow-primary/50
     `,
         secondary: `
       text-white 
@@ -70,9 +70,9 @@ export default function Button({
       focus:ring-gray-500/40
     `,
         outline: `
-      text-indigo-400 border-2 border-indigo-500/60 
-      hover:bg-indigo-500/10 hover:text-indigo-300 
-      focus:ring-indigo-500/30
+      text-accent border-2 border-accent/60 
+      hover:bg-accent/10 hover:text-accent 
+      focus:ring-accent/30
       bg-transparent shadow-none
     `,
         ghost: `
