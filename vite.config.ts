@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from 'vite-plugin-sitemap';
-import Pages from 'vite-plugin-pages-react';
+import Pages from 'vite-plugin-pages';
 
 export default defineConfig({
     base: '/noybcore.github.io/',
