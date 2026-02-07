@@ -1,19 +1,27 @@
-'use client';
-
 import { motion, type Variants, MotionConfig } from 'framer-motion';
 import { useState } from 'react';
 import Button from '../../components/buttons/Button';
+import emailjs from '@emailjs/browser';
+import toast, { Toaster } from 'react-hot-toast';
+import { useTranslation } from 'react-i18next';
+
+export interface FormData {
+    name: string;
+    email: string;
+    subject: string;
+    message: string;
+}
 
 const fadeInUpVariants: Variants = {
     hidden: {
         opacity: 0,
-        y: 30,
+        y: 20, // Reduced from 30 for subtler effect
     },
     visible: {
         opacity: 1,
         y: 0,
         transition: {
-            duration: 0.8,
+            duration: 0.6, // Slightly faster
             ease: [0.22, 1, 0.36, 1] as const,
         },
     },
@@ -24,16 +32,16 @@ const staggerContainer = {
     visible: {
         opacity: 1,
         transition: {
-            staggerChildren: 0.2,
+            staggerChildren: 0.1, // Faster stagger
         },
     },
 };
 
-import { useTranslation } from 'react-i18next';
-
 export default function Contact() {
+    const [loading, setLoading] = useState<boolean>(false);
     const { t } = useTranslation();
-    const [formData, setFormData] = useState({
+
+    const [formData, setFormData] = useState<FormData>({
         name: '',
         email: '',
         subject: '',
@@ -44,55 +52,119 @@ export default function Contact() {
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
     ) => {
         const { name, value } = e.target;
-        setFormData((prev) => ({ ...prev, [name]: value }));
+        setFormData({
+            ...formData,
+            [name]: value,
+        });
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        // Form submission logic to be added later (e.g. API call)
-        console.log('Form submitted:', formData);
-        // Optionally reset form or show success message
+
+        // Basic validation
+        if (
+            !formData.name ||
+            !formData.email ||
+            !formData.subject ||
+            !formData.message
+        ) {
+            toast.error(t('contact.validation.name_required')); // Just a generic error fallback or specific check
+            return;
+        }
+
+        setLoading(true);
+        const loadingToast = toast.loading(t('contact.toasts.loading'));
+
+        try {
+            await emailjs.sendForm(
+                import.meta.env.VITE_EMAILJS_SERVICE_ID,
+                import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+                e.target as HTMLFormElement,
+                import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+            );
+
+            toast.success(t('contact.toasts.success'), {
+                id: loadingToast,
+                duration: 5000,
+            });
+
+            setFormData({
+                name: '',
+                email: '',
+                subject: '',
+                message: '',
+            });
+        } catch (error) {
+            console.error('FAILED...', error);
+            toast.error(t('contact.toasts.error'), {
+                id: loadingToast,
+                duration: 5000,
+            });
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
         <MotionConfig reducedMotion="user">
-            <div className="min-h-screen flex items-center justify-center px-4 py-12 sm:py-16 md:py-20">
+            <div className="min-h-screen flex items-center justify-center px-4 py-8 sm:py-12">
+                <Toaster
+                    position="bottom-center"
+                    toastOptions={{
+                        style: {
+                            background: '#1F2937', // Gray-800
+                            color: '#fff',
+                            border: '1px solid #374151', // Gray-700
+                        },
+                        success: {
+                            iconTheme: {
+                                primary: '#6366f1', // Indigo-500
+                                secondary: '#fff',
+                            },
+                        },
+                        error: {
+                            iconTheme: {
+                                primary: '#ef4444', // Red-500
+                                secondary: '#fff',
+                            },
+                        },
+                    }}
+                />
+
                 <motion.div
                     initial="hidden"
                     animate="visible"
                     variants={staggerContainer}
-                    className="max-w-2xl w-full text-center space-y-10 md:space-y-16"
+                    className="max-w-xl w-full text-center space-y-8 md:space-y-10" // Tighter spacing
                 >
-                    {/* Headline */}
-                    <motion.h1
-                        variants={fadeInUpVariants}
-                        className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white"
-                    >
-                        {t('contact.hero.title')}
-                    </motion.h1>
+                    {/* Header Section */}
+                    <div className="space-y-3">
+                        <motion.h1
+                            variants={fadeInUpVariants}
+                            className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white"
+                        >
+                            {t('contact.hero.title')}
+                        </motion.h1>
 
-                    {/* Short line */}
-                    <motion.p
-                        variants={fadeInUpVariants}
-                        className="text-xl sm:text-2xl text-gray-300 font-light"
-                    >
-                        {t('contact.hero.subtitle')}
-                    </motion.p>
+                        <motion.p
+                            variants={fadeInUpVariants}
+                            className="text-lg sm:text-xl text-gray-300 font-light"
+                        >
+                            {t('contact.hero.subtitle')}
+                        </motion.p>
+                    </div>
 
                     {/* Form */}
                     <motion.form
                         onSubmit={handleSubmit}
                         variants={staggerContainer}
-                        className="space-y-8 mt-10 md:mt-12"
+                        className="space-y-5 text-left bg-gray-900/40 p-6 sm:p-8 rounded-2xl border border-white/5 backdrop-blur-sm"
                     >
                         {/* Name */}
-                        <motion.div
-                            variants={fadeInUpVariants}
-                            className="text-left"
-                        >
+                        <motion.div variants={fadeInUpVariants}>
                             <label
                                 htmlFor="name"
-                                className="block text-sm font-medium text-gray-400 mb-2"
+                                className="block text-sm font-medium text-gray-400 mb-1.5"
                             >
                                 {t('contact.form.name')}
                             </label>
@@ -102,19 +174,17 @@ export default function Contact() {
                                 name="name"
                                 value={formData.name}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-colors"
+                                required
+                                className="w-full px-4 py-2.5 bg-gray-900/80 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-colors"
                                 placeholder={t('contact.form.name_placeholder')}
                             />
                         </motion.div>
 
                         {/* Email */}
-                        <motion.div
-                            variants={fadeInUpVariants}
-                            className="text-left"
-                        >
+                        <motion.div variants={fadeInUpVariants}>
                             <label
                                 htmlFor="email"
-                                className="block text-sm font-medium text-gray-400 mb-2"
+                                className="block text-sm font-medium text-gray-400 mb-1.5"
                             >
                                 {t('contact.form.email')}
                             </label>
@@ -124,19 +194,19 @@ export default function Contact() {
                                 name="email"
                                 value={formData.email}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-colors"
-                                placeholder={t('contact.form.email_placeholder')}
+                                required
+                                className="w-full px-4 py-2.5 bg-gray-900/80 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-colors"
+                                placeholder={t(
+                                    'contact.form.email_placeholder'
+                                )}
                             />
                         </motion.div>
 
                         {/* Subject */}
-                        <motion.div
-                            variants={fadeInUpVariants}
-                            className="text-left"
-                        >
+                        <motion.div variants={fadeInUpVariants}>
                             <label
                                 htmlFor="subject"
-                                className="block text-sm font-medium text-gray-400 mb-2"
+                                className="block text-sm font-medium text-gray-400 mb-1.5"
                             >
                                 {t('contact.form.subject')}
                             </label>
@@ -146,19 +216,19 @@ export default function Contact() {
                                 name="subject"
                                 value={formData.subject}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-colors"
-                                placeholder={t('contact.form.subject_placeholder')}
+                                required
+                                className="w-full px-4 py-2.5 bg-gray-900/80 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-colors"
+                                placeholder={t(
+                                    'contact.form.subject_placeholder'
+                                )}
                             />
                         </motion.div>
 
                         {/* Message */}
-                        <motion.div
-                            variants={fadeInUpVariants}
-                            className="text-left"
-                        >
+                        <motion.div variants={fadeInUpVariants}>
                             <label
                                 htmlFor="message"
-                                className="block text-sm font-medium text-gray-400 mb-2"
+                                className="block text-sm font-medium text-gray-400 mb-1.5"
                             >
                                 {t('contact.form.message')}
                             </label>
@@ -167,49 +237,80 @@ export default function Contact() {
                                 name="message"
                                 value={formData.message}
                                 onChange={handleChange}
-                                rows={6}
-                                className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-colors resize-none"
-                                placeholder={t('contact.form.message_placeholder')}
+                                required
+                                rows={5}
+                                className="w-full px-4 py-2.5 bg-gray-900/80 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-colors resize-none"
+                                placeholder={t(
+                                    'contact.form.message_placeholder'
+                                )}
                             />
                         </motion.div>
 
                         {/* Submit Button */}
-                        <Button
-                            type="submit"
-                            variant="primary"
-                            size="lg"
-                            delay={0.7}
-                            icon={
-                                <svg
-                                    className="w-5 h-5"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth={2}
-                                        d="M13 7l5 5m0 0l-5 5m5-5H6"
-                                    />
-                                </svg>
-                            }
-                        >
-                            {t('contact.submit')}
-                        </Button>
+                        <div className="pt-2">
+                            <Button
+                                type="submit"
+                                variant="primary"
+                                size="lg"
+                                className="w-full justify-center" // Full width button
+                                disabled={loading}
+                                icon={
+                                    loading ? (
+                                        <svg
+                                            className="animate-spin h-5 w-5 text-white"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <circle
+                                                className="opacity-25"
+                                                cx="12"
+                                                cy="12"
+                                                r="10"
+                                                stroke="currentColor"
+                                                strokeWidth="4"
+                                            ></circle>
+                                            <path
+                                                className="opacity-75"
+                                                fill="currentColor"
+                                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                                            ></path>
+                                        </svg>
+                                    ) : (
+                                        <svg
+                                            className="w-5 h-5"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth={2}
+                                                d="M13 7l5 5m0 0l-5 5m5-5H6"
+                                            />
+                                        </svg>
+                                    )
+                                }
+                            >
+                                {loading
+                                    ? t('contact.toasts.loading')
+                                    : t('contact.submit')}
+                            </Button>
+                        </div>
                     </motion.form>
 
                     {/* Alternative contact */}
                     <motion.p
                         variants={fadeInUpVariants}
-                        transition={{ delay: 0.6 }}
-                        className="text-gray-500 text-sm mt-10"
+                        transition={{ delay: 0.4 }}
+                        className="text-gray-500 text-sm"
                     >
                         {t('contact.email_alt')}{' '}
                         <a
                             href="mailto:hi@noybcore.com"
-                            className="text-indigo-400 hover:text-indigo-300 transition-colors"
+                            className="text-indigo-400 hover:text-indigo-300 transition-colors font-medium"
                         >
                             noybcore@gmail.com
                         </a>

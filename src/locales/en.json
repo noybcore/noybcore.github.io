@@ -72,6 +72,16 @@
           "message_placeholder": "Tell us about your project..."
       },
       "submit": "Send Message",
-      "email_alt": "Or just email us at"
+      "email_alt": "Or just email us at",
+      "validation": {
+          "name_required": "Name is required",
+          "email_invalid": "Invalid email address",
+          "message_min": "Message must be at least 20 characters"
+      },
+      "toasts": {
+          "loading": "Sending...",
+          "success": "Message sent! I'll get back to you as soon as possible.",
+          "error": "Failed to send message. Please try again or email me directly."
+      }
   }
 }

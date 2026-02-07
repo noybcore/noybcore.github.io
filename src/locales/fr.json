@@ -72,6 +72,16 @@
           "message_placeholder": "Parlez-nous de votre projet..."
       },
       "submit": "Envoyer le message",
-      "email_alt": "Ou écrivez-nous simplement à"
+      "email_alt": "Ou écrivez-nous simplement à",
+      "validation": {
+          "name_required": "Le nom est requis",
+          "email_invalid": "Adresse email invalide",
+          "message_min": "Le message doit contenir au moins 20 caractères"
+      },
+      "toasts": {
+          "loading": "Envoi en cours...",
+          "success": "Message envoyé ! Je vous répondrai dès que possible.",
+          "error": "Échec de l'envoi. Veuillez réessayer ou m'envoyer un email directement."
+      }
   }
 }
