@@ -10,6 +10,7 @@ export interface FormData {
     email: string;
     subject: string;
     message: string;
+    time: string;
 }
 
 const fadeInUpVariants: Variants = {
@@ -46,6 +47,7 @@ export default function Contact() {
         email: '',
         subject: '',
         message: '',
+        time: new Date().toLocaleString(),
     });
 
     const handleChange = (
@@ -93,6 +95,7 @@ export default function Contact() {
                 email: '',
                 subject: '',
                 message: '',
+                time: new Date().toLocaleString(),
             });
         } catch (error) {
             console.error('FAILED...', error);
