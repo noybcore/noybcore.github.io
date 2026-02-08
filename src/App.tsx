@@ -1,4 +1,4 @@
-import { BrowserRouter, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import AppRoutes from './routes/AppRoutes';
 import Background from './components/Background';
@@ -19,12 +19,7 @@ function App() {
     }, [location]);
 
     return (
-        <BrowserRouter
-            future={{
-                v7_startTransition: true,
-                v7_relativeSplatPath: true,
-            }}
-        >
+        <>
             <Background />
             <div className="fixed inset-0">
                 <Navbar />
@@ -32,7 +27,7 @@ function App() {
                     <AppRoutes />
                 </main>
             </div>
-        </BrowserRouter>
+        </>
     );
 }
 
