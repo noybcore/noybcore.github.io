@@ -1,9 +1,23 @@
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import AppRoutes from './routes/AppRoutes';
 import Background from './components/Background';
+import { useEffect } from 'react';
+
+import ReactGA from 'react-ga4';
+
+ReactGA.initialize('G-MYC03LH9EB');
 
 function App() {
+    const location = useLocation();
+
+    useEffect(() => {
+        ReactGA.send({
+            hitType: 'pageview',
+            page: location.pathname + location.search,
+        });
+    }, [location]);
+
     return (
         <BrowserRouter
             future={{
